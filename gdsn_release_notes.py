@@ -33,16 +33,16 @@ def apply_substitutions(input_text):
 
 # Set up the Streamlit app
 def main():
-    st.title('Transform GDSN Release Notes HTML')
+    st.title('Transform HTML for GDSN release notes')
 
     # Create the input box for the user to paste in HTML
-    input_text = st.text_area('Input GDSN Release Notes HTML here', height=200)
+    input_text = st.text_area('Copy the Source HTML from Salesforce Knowledge and paste it here', height=200)
 
     # Create the button to apply the substitutions
     if st.button('Transform'):
         output_text = apply_substitutions(input_text)
         # Display the transformed HTML
-        st.text_area('Transformed HTML', value=output_text, height=200)
+        st.text_area('Copy this output and paste it into the Source HTML in Salesforce Knowledge', value=output_text, height=200)
 
 if __name__ == "__main__":
     main()
