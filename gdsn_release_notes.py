@@ -27,6 +27,12 @@ def apply_substitutions(input_text):
     text = re.sub(r'<span style="font-style:italic">(.*?)</span>', r'<i>\1</i>', text)
 
 
+# Apply the regular expressions and replacements to the text
+for pattern, replacement in patterns:
+    text = re.sub(pattern, replacement, text)
+
+return text
+
 # Set up the Streamlit app
 def main():
     st.title('Transform GDSN Release Notes HTML')
@@ -41,4 +47,4 @@ def main():
         st.text_area('Transformed HTML', value=output_text, height=200)
 
 if __name__ == "__main__":
-    main()    
+    main()   
