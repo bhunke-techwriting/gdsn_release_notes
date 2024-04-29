@@ -1,7 +1,6 @@
 import re
 import streamlit as st
 
-
 # Define the regular expressions to search for and their replacements
 patterns = [
     (r'<p>', '<p style="margin: 5px 0;line-height: 1.5;">'),
@@ -26,12 +25,11 @@ def apply_substitutions(input_text):
     # Apply the <i> substitution for <span> tags
     text = re.sub(r'<span style="font-style:italic">(.*?)</span>', r'<i>\1</i>', text)
 
+    # Apply the regular expressions and replacements to the text
+    for pattern, replacement in patterns:
+        text = re.sub(pattern, replacement, text)
 
-# Apply the regular expressions and replacements to the text
-for pattern, replacement in patterns:
-    text = re.sub(pattern, replacement, text)
-
-return text
+    return text
 
 # Set up the Streamlit app
 def main():
@@ -47,4 +45,4 @@ def main():
         st.text_area('Transformed HTML', value=output_text, height=200)
 
 if __name__ == "__main__":
-    main()   
+    main()
